@@ -3,7 +3,7 @@
 namespace FacioRatio.CSharpRailway
 {
     /// <summary>
-    /// Represents an exception that is thrown when a record cannot be found.
+    /// Represents an exception that is thrown when a collection is empty.
     /// </summary>
     public class NotFoundException : Exception
     {

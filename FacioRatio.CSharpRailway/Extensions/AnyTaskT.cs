@@ -7,6 +7,14 @@ namespace FacioRatio.CSharpRailway
     [System.Diagnostics.DebuggerStepThrough]
     public static class ResultAnyTaskTExtensions
     {
+        /// <summary>
+        /// Verify a list Result is not empty.
+        /// </summary>
+        /// <param name="t">The list Result to verify.</param>
+        /// <returns>
+        /// A successful Result with the same value if the list is not empty,
+        /// otherwise a failed Result with a NotFoundException.
+        /// </returns>
         public static async Task<Result<IEnumerable<T>>> Any<T>(this Task<Result<IEnumerable<T>>> tTask)
         {
             var t = await tTask;
@@ -19,6 +27,14 @@ namespace FacioRatio.CSharpRailway
             return t;
         }
 
+        /// <summary>
+        /// Verify a list Result is not empty.
+        /// </summary>
+        /// <param name="t">The list Result to verify.</param>
+        /// <returns>
+        /// A successful Result with the same value if the list is not empty,
+        /// otherwise a failed Result with a NotFoundException.
+        /// </returns>
         public static async Task<Result<List<T>>> Any<T>(this Task<Result<List<T>>> tTask)
         {
             var t = await tTask;

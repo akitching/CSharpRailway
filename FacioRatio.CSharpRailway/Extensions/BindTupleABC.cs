@@ -6,21 +6,53 @@ namespace FacioRatio.CSharpRailway
     [System.Diagnostics.DebuggerStepThrough]
     public static class ResultBindTupleABCExtensions
     {
+        /// <summary>
+        /// Bind and return a Tuple with the original value.
+        /// </summary>
+        /// <param name="t">The Result to bind.</param>
+        /// <param name="func">The transformation function.</param>
+        /// <returns>
+        /// A successful Result with the result of the passed function.
+        /// </returns>
         public static Result<(A, B, C, D)> BindTuple<A, B, C, D>(this Result<(A, B, C)> t, Func<A, B, C, Result<D>> func)
         {
             return t.Bind(y => { (A a, B b, C c) = y; return func(a, b, c).Bind(d => (a, b, c, d)); });
         }
 
+        /// <summary>
+        /// Bind and return a Tuple with the original value.
+        /// </summary>
+        /// <param name="t">The Result to bind.</param>
+        /// <param name="func">The transformation function.</param>
+        /// <returns>
+        /// A successful Result with the result of the passed function.
+        /// </returns>
         public static Result<(A, B, C, D)> BindTuple<A, B, C, D>(this Result<(A, B, C)> t, Func<A, B, C, D> func)
         {
             return t.Bind(y => { (A a, B b, C c) = y; return (a, b, c, func(a, b, c)); });
         }
 
+        /// <summary>
+        /// Bind and return a Tuple with the original value.
+        /// </summary>
+        /// <param name="t">The Result to bind.</param>
+        /// <param name="func">The transformation function.</param>
+        /// <returns>
+        /// A successful Result with the result of the passed function.
+        /// </returns>
         public static Task<Result<(A, B, C, D)>> BindTuple<A, B, C, D>(this Result<(A, B, C)> t, Func<A, B, C, Task<Result<D>>> func)
         {
             return t.Bind(y => { (A a, B b, C c) = y; return func(a, b, c).Bind(d => (a, b, c, d)); });
         }
 
+        /// <summary>
+        /// Bind and return a Tuple with the original value.
+        /// </summary>
+        /// <param name="t">The Result to bind.</param>
+        /// <param name="func">The transformation function.</param>
+        /// <returns>
+        /// A successful Result with the result of the passed function.
+        /// </returns>
         public static Task<Result<(A, B, C, D)>> BindTuple<A, B, C, D>(this Result<(A, B, C)> t, Func<A, B, C, Task<D>> func)
         {
             return t.Bind(async y => { (A a, B b, C c) = y; var d = await func(a, b, c); return (a, b, c, d); });

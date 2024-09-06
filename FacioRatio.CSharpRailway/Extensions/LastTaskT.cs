@@ -8,6 +8,14 @@ namespace FacioRatio.CSharpRailway
     [System.Diagnostics.DebuggerStepThrough]
     public static class ResultLastTaskTExtensions
     {
+        /// <summary>
+        /// Retrieve the last item in a list Result.
+        /// </summary>
+        /// <param name="tTask">The list Result to retrieve the last item from.</param>
+        /// <returns>
+        /// A Result with the first ist tem in the list if the list is not empty,
+        /// otherwise a failed Result with a NotFoundException.
+        /// </returns>
         public static async Task<Result<T>> Last<T>(this Task<Result<IEnumerable<T>>> tTask)
         {
             var t = await tTask;
@@ -25,6 +33,14 @@ namespace FacioRatio.CSharpRailway
             }
         }
 
+        /// <summary>
+        /// Retrieve the last item in a list Result.
+        /// </summary>
+        /// <param name="tTask">The list Result to retrieve the last item from.</param>
+        /// <returns>
+        /// A Result with the first ist tem in the list if the list is not empty,
+        /// otherwise a failed Result with a NotFoundException.
+        /// </returns>
         public static async Task<Result<T>> Last<T>(this Task<Result<List<T>>> tTask)
         {
             var t = await tTask;

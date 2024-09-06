@@ -7,6 +7,14 @@ namespace FacioRatio.CSharpRailway
     [System.Diagnostics.DebuggerStepThrough]
     public static class ResultLastTExtensions
     {
+        /// <summary>
+        /// Retrieve the last item in a list Result.
+        /// </summary>
+        /// <param name="tTask">The list Result to retrieve the last item from.</param>
+        /// <returns>
+        /// A Result with the first ist tem in the list if the list is not empty,
+        /// otherwise a failed Result with a NotFoundException.
+        /// </returns>
         public static Result<T> Last<T>(this Result<IEnumerable<T>> t)
         {
             if (t.IsFailure)
@@ -23,6 +31,14 @@ namespace FacioRatio.CSharpRailway
             }
         }
 
+        /// <summary>
+        /// Retrieve the last item in a list Result.
+        /// </summary>
+        /// <param name="t">The list Result to retrieve the last item from.</param>
+        /// <returns>
+        /// A Result with the last item in the list if the list is not empty,
+        /// otherwise a failed Result with a NotFoundException.
+        /// </returns>
         public static Result<T> Last<T>(this Result<List<T>> t)
         {
             if (t.IsFailure)

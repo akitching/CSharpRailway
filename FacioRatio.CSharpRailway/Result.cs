@@ -12,9 +12,18 @@ namespace FacioRatio.CSharpRailway
     public class Result<T>
     {
         internal readonly T Value;
+        /// <summary>
+        /// The failure error, if any.
+        /// </summary>
         public readonly Exception Error;
 
+        /// <summary>
+        /// Returns true if the result is a success, otherwise false.
+        /// </summary>
         public bool IsSuccess => Error == default;
+        /// <summary>
+        /// Returns true if the result is a failure, otherwise false.
+        /// </summary>
         public bool IsFailure => !IsSuccess;
 
         internal Result(T value, Exception error = default)
